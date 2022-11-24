@@ -22,8 +22,10 @@ headers = {"Authorization": 'Basic ' + base64.b64encode((':' + token).encode()).
 response = requests.get(url, headers=headers)
 r = response.json()
 
+if 'value' not in r:
+    print(r['message'])
+    exit()
 groups = r['value']
-
 
 var_group_1_results = list(filter(lambda x: x['name'] == var_group_1_name, groups))
 var_group_2_results = list(filter(lambda x: x['name'] == var_group_2_name, groups))
