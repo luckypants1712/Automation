@@ -18,13 +18,9 @@ headers = {"Authorization": 'Basic ' + base64.b64encode((':' + token).encode()).
 response = requests.get(url, headers=headers)
 r = response.json()
 
-# Error check
-try:
-    r['value']
-except:
+if 'value' not in r:
     print(r['message'])
     exit()
-
 groups = r['value']
 # group_vars = [group for group in groups]
 for group in groups:
