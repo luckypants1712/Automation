@@ -20,8 +20,7 @@ response = requests.get(url, headers=headers)
 r = response.json()
 
 # Error check
-try:r['value']
-except:
+if 'value' not in r:
     print(r['message'])
     exit()
 
